@@ -474,3 +474,172 @@ const thirdToLastLetter = firstName[firstName.length - 3];
 Você recebe frases com algumas palavras faltando, como substantivos, verbos, adjetivos e advérbios. Você então preencherá os pedaços faltantes com palavras de sua escolha de modo que a frase completa faça sentido.
 
 Considere a frase - Era realmente **____** e nós **____** nós mesmos **____**. Essa frase possui três pedaços faltando - um adjetivo, um verbo e um advérbio, e nós podemos adicionar palavras de nossa escolha para completar. Em seguida, podemos atribuir a frase completa para uma variável como se segue:
+
+
+# Manipulacao de Arrays
+
+# **Armazenar múltiplos valores em uma variável usando arrays JavaScript**
+
+Com as variáveis de `array` em JavaScript, podemos armazenar diversos dados em um único lugar.
+
+Você começa uma declaração de um array com a abertura de um colchetes, terminando com o fechamento do colchetes e colocando vírgulas entre cada entrada, dessa forma:
+
+```
+const sandwich = ["peanut butter", "jelly", "bread"];
+```
+
+Você também pode aninhar arrays dentro de outros arrays, como abaixo:
+
+```
+const teams = [["Bulls", 23], ["White Sox", 45]];
+
+```
+
+Isso é chamado um *array multidimensional*.
+
+# **Acessar array de dados com índices**
+
+Podemos acessar os dados dentro de arrays usando *indexes*.
+
+Os índices de um array são escritos na mesma notação com colchetes que as strings usam. Porém, em vez de especificar um caractere, eles estão especificando um item do array. Assim como ocorre com as strings, os arrays usam indexação *de base zero*, de forma que o primeiro elemento de um array possui índice `0`.
+
+**Exemplo**
+
+```
+const array = [50, 60, 70];
+console.log(array[0]);
+const data = array[1];
+
+```
+
+O `console.log(array[0])` exibirá `50` e `data` terá o valor de `60`.
+
+# **Modificar dados de array com índices**
+
+Ao contrário das strings, as entradas de arrays são *mutáveis* e podem ser alteradas livremente, mesmo se o array foi declarado com `const`.
+
+**Exemplo**
+
+```
+const ourArray = [50, 40, 30];
+ourArray[0] = 15;
+
+```
+
+`ourArray` agora tem o valor `[15, 40, 30]`.
+
+**Observação:** não deve haver espaços entre o nome do array e os colchetes, como `array [0]`. Embora JavaScript seja capaz de processar isso corretamente, isso pode confundir outros programadores lendo seu código.
+
+# **Acessar arrays multidimensionais com índices**
+
+Uma maneira de pensar em um array *multidimensional* é como um *array de arrays*. Quando você usa colchetes para acessar seu array, o primeiro conjunto de colchetes se refere às entradas no array mais exterior (o primeiro nível), e cada par adicional de colchetes refere-se ao próximo nível de entradas interno.
+
+**Exemplo**
+
+```
+const arr = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [[10, 11, 12], 13, 14]
+];
+
+const subarray = arr[3];
+const nestedSubarray = arr[3][0];
+const element = arr[3][0][1];
+
+```
+
+Neste exemplo, `subarray` tem o valor de `[[10, 11, 12], 13, 14]`, `nestedSubarray` tem o valor de `[10, 11, 12]` e `element` tem o valor de `11` .
+
+**Observação:** não deve haver nenhum espaço entre o nome do array e os colchetes como `array [0][0]` e até mesmo `array [0] [0]` não é permitido. Embora JavaScript seja capaz de processar isso corretamente, isso pode confundir outros programadores lendo seu código.
+
+# **Manipular arrays com push()**
+
+Uma forma fácil de adicionar dados no final de um array é através da função `push()`.
+
+`.push()` recebe um ou mais *parâmetros* e "empurra" eles no final do array.
+
+Exemplos:
+
+```
+const arr1 = [1, 2, 3];
+arr1.push(4);
+
+const arr2 = ["Stimpson", "J", "cat"];
+arr2.push(["happy", "joy"]);
+
+```
+
+`arr1` agora tem o valor de `[1, 2, 3, 4]` e `arr2` tem o valor de `["Stimpson", "J", "cat", ["happy", "joy"]]`.
+
+---
+
+Empurre `["dog", 3]` para o final da variável `myArray`.
+
+# **Manipular arrays com pop()**
+
+Outra forma de alterar os dados em um array é com a função `.pop()`.
+
+`.pop()` é usado para remover um valor do final do array. Nós podemos armazenar esse valor removido atribuindo-o a uma variável. Em outras palavras, `.pop()` remove o último elemento de um array e retorna aquele elemento.
+
+Qualquer tipo de entrada pode ser removida de um array - numbers, strings e até mesmo arrays aninhados.
+
+```
+const threeArr = [1, 4, 6];
+const oneDown = threeArr.pop();
+console.log(oneDown);
+console.log(threeArr);
+
+```
+
+O primeiro `console.log` exibirá o valor `6` e o segundo exibirá o valor `[1, 4]`.
+
+---
+
+Use a função `.pop()` para remover o último item de `myArray` e atribuir o valor removido para uma nova variável, `removedFromMyArray`.
+
+# **Manipular arrays com shift()**
+
+`pop()` sempre remove o último elemento de um array. E se você quiser remover o primeiro?
+
+É aí que o `.shift()` vem a ser útil. Ele funciona da mesma forma que `.pop()`, exceto que ele remove o primeiro elemento ao invés do último.
+
+Exemplo:
+
+```
+const ourArray = ["Stimpson", "J", ["cat"]];
+const removedFromOurArray = ourArray.shift();
+
+```
+
+`removedFromOurArray` teria o valor da string `Stimpson` e `ourArray` teria o valor de `["J", ["cat"]]`.
+
+# **Manipular arrays com unshift()**
+
+Você pode não apenas usar `shift` para remover elementos do início de um array, como também pode usar `unshift` para adicionar elementos ao início de um array, ou seja, adicionar elementos na posição inicial do array.
+
+`.unshift()` funciona exatamente como `.push()`, mas, ao invés de adicionar o elemento ao final do array, `unshift()` adiciona o elemento no início do array.
+
+Exemplo:
+
+```
+const ourArray = ["Stimpson", "J", "cat"];
+ourArray.shift();
+ourArray.unshift("Happy");
+
+```
+
+Após o `shift`, `ourArray` teria o valor `["J","cat"]`. Após o `unshift`, `ourArray` teria o valor `["Happy","J","cat"]`.
+
+# **Criar lista de compras**
+
+Crie uma lista de compras na variável `myList`. A lista deve ser um array multidimensional contendo diversos sub-arrays.
+
+O primeiro elemento em cada sub-array deve conter uma string com o nome do item. O segundo elemento deve ser um número representando a quantidade, ou seja,
+
+```
+["Chocolate Bar", 15]
+```
+
+[Fila](https://www.notion.so/Fila-271aba99ee2c46e287b7ce75ec9d3b17)
