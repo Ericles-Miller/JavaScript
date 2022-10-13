@@ -643,3 +643,166 @@ O primeiro elemento em cada sub-array deve conter uma string com o nome do item.
 ```
 
 [Fila](https://www.notion.so/Fila-271aba99ee2c46e287b7ce75ec9d3b17)
+
+
+# Funções
+
+# **Escrever JavaScript reutilizável com funções**
+
+Em JavaScript, nós podemos dividir nosso código em partes reutilizáveis chamadas de *funções*.
+
+Aqui está um exemplo de uma função:
+
+```
+function functionName() {
+  console.log("Hello World");
+}
+
+```
+
+Você pode chamar ou *invocar* essa função ao usar seu nome seguido de parênteses, da seguinte forma: `functionName();` Cada vez que a função é chamada, imprimirá no console a mensagem `Hello World`. Todo o código entre as chaves será executado toda vez que uma função for chamada.
+
+# **Passar valores para funções com argumentos**
+
+*Parâmetros* são variáveis que atuam como espaços reservados para os valores que são passados para uma função, quando ela é chamada. Quando uma função é definida, normalmente ela é definida junto com um ou mais parâmetros. Os valores reais que são entradas de (ou *"passadas"* para) uma função quando ela é chamada são conhecidos como *argumentos*.
+
+Aqui está uma função com dois parâmetros, `param1` e `param2`:
+
+```
+function testFun(param1, param2) {
+  console.log(param1, param2);
+}
+
+```
+
+Então podemos chamar o `testFun` dessa forma: `testFun("Hello", "World");`. Passamos dois argumentos do tipo string, `Hello` e `World`. Dentro da função, `param1` será igual à string `Hello` e `param2` será igual à string `World`. Note que você poderia chamar o `testFun` novamente com diferentes argumentos e os parâmetros assumiriam o valor dos novos argumentos.
+
+# **Retornar um valor de uma função com return**
+
+Nós podemos passar valores para uma função com *argumentos*. Você pode usar uma instrução `return` para enviar um valor para fora de uma função.
+
+**Exemplo**
+
+```
+function plusThree(num) {
+  return num + 3;
+}
+
+const answer = plusThree(5);
+
+```
+
+`answer` tem o valor de `8`.
+
+`plusThree` recebe um *argumento* para `num` e retorna um valor igual a `num + 3`.
+
+# **Conhecer o escopo global e funções**
+
+Em JavaScript, *escopo* refere-se à visibilidade de variáveis. Variáveis que são definidas fora de um bloco de função tem o escopo *Global*. Isso significa que elas podem ser vistas em qualquer lugar no seu código JavaScript.
+
+Variáveis que são declaradas sem a palavra-chave `let` ou `const` são automaticamente criadas no escopo `global`. Isso pode criar consequências indesejadas em outro lugar no seu código ou quando executar uma função novamente. Você sempre deve declarar suas variáveis com `let` ou `const`.
+
+---
+
+Usando `let` ou `const`, declare uma variável global chamada `myGlobal` fora de qualquer função. Inicialize-a com o valor de `10`.
+
+Dentro da função `fun1`, atribua `5` para `oopsGlobal` ***sem*** usar as palavras-chave `var`, `let` ou `const`.
+
+# **Conhecer o escopo local e funções**
+
+Variáveis que são declaradas dentro de uma função, assim como parâmetros das funções, possuem escopo *local*. Isso significa que elas são visíveis apenas dentro da função.
+
+Aqui está uma função `myTest` com uma variável local chamada `loc`.
+
+```
+function myTest() {
+  const loc = "foo";
+  console.log(loc);
+}
+
+myTest();
+console.log(loc);
+
+```
+
+A chamada da função `myTest()` vai exibir a string `foo` no console. A linha `console.log(loc)` (fora da função `myTest`) vai lançar um erro, já que `loc` não foi definido fora da função.
+
+# **Diferenciar escopo global e local em funções**
+
+É possível ter as variáveis *local* e *global* com o mesmo nome. Quando você faz isso, a variável local tem precedência sobre a variável global.
+
+Neste exemplo:
+
+```
+const someVar = "Hat";
+
+function myFun() {
+  const someVar = "Head";
+  return someVar;
+}
+
+```
+
+A função `myFun` retornará a string `Head` porque a versão local da variável está presente.
+
+# **Entender o valor undefined retornado de uma função**
+
+Uma função pode incluir a instrução `return` mas ela não precisa fazer isso. No caso de a função não ter uma instrução `return`, quando você a chamar, a função processa o código interno, mas o valor retornado é `undefined`.
+
+**Exemplo**
+
+```
+let sum = 0;
+
+function addSum(num) {
+  sum = sum + num;
+}
+
+addSum(3);
+
+```
+
+`addSum` é uma função sem uma instrução `return`. A função vai alterar a variável global `sum`, mas o valor retornado da função é `undefined`.
+
+# **Atribuir com o valor retornado**
+
+Se você se lembrar de nossa discussão sobre como [armazenar valores com o operador de atribuição](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/storing-values-with-the-assignment-operator), tudo à direita do sinal de igual é resolvido antes de o valor ser atribuído. Isso significa que podemos pegar o valor de retorno de uma função e atribuí-lo a uma variável.
+
+Assuma que temos uma função predefinida chamada `sum`, que soma dois números. Então:
+
+```
+ourSum = sum(5, 12);
+
+```
+
+chamará a função `sum`, a qual retorna o valor `17` e então atribui este valor à variável `ourSum`.
+
+# **Usar recursão para criar uma contagem regressiva**
+
+Em um [desafio anterior](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/replace-loops-using-recursion), você aprendeu como usar recursão para substituir laços `for`. Agora, vamos analisar uma função mais complexa, a qual retorna um array de inteiros consecutivos começando com `1` até o número passado para a função.
+
+Como mencionado no desafio anterior, haverá um *caso de base*. O caso de base diz a função recursiva quando ela não precisa mais chamar a si. É um simples caso onde o valor de retorno já é conhecido. Também haverá uma *chamada recursiva*, a qual executa a função original com argumentos diferentes. Se a função for escrita corretamente, eventualmente o caso de base será alcançado.
+
+Por exemplo, vamos dizer que você quer escrever uma função recursiva que retorna um array contendo os números de `1` até `n`. Essa função precisará aceitar um argumento, `n`, representando o número final. Então, ela precisará chamar a si mesma com valores progressivamente menores, começando em `n` até chegar a `1`. Você poderia escrever a função da seguinte forma:
+
+```
+function countup(n) {
+  if (n < 1) {
+    return [];
+  } else {
+    const countArray = countup(n - 1);
+    countArray.push(n);
+    return countArray;
+  }
+}
+console.log(countup(5));
+
+```
+
+O valor `[1, 2, 3, 4, 5]` será exibido no console.
+
+Inicialmente, isso parece contraintuitivo já que o valor de `n` *diminui*, mas os valores no array final estão *em ordem crescente*. Isso acontece porque a adição no array (push) acontece por último, após a chamada recursiva ter retornado. No ponto onde `n` é adicionado ao array, `countup(n - 1)` já foi avaliado e retornou `[1, 2, ..., n -1]`.
+
+---
+
+Definimos uma função chamada `countdown` com um parâmetro (`n`). A função deve usar recursão para retornar um array contendo inteiros `n` até `1` com base no parâmetro `n`. Se a função é chamada com um número menor que 1, a função deve retornar um array vazio. Por exemplo, chamar essa função com `n = 5` deve retornar o array `[5, 4, 3, 2, 1]`. Sua função precisa usar recursão para chamar a si mesma e não depender de nenhum tipo de laço.
