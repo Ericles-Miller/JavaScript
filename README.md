@@ -806,3 +806,598 @@ Inicialmente, isso parece contraintuitivo já que o valor de `n` *diminui*, ma
 ---
 
 Definimos uma função chamada `countdown` com um parâmetro (`n`). A função deve usar recursão para retornar um array contendo inteiros `n` até `1` com base no parâmetro `n`. Se a função é chamada com um número menor que 1, a função deve retornar um array vazio. Por exemplo, chamar essa função com `n = 5` deve retornar o array `[5, 4, 3, 2, 1]`. Sua função precisa usar recursão para chamar a si mesma e não depender de nenhum tipo de laço.
+
+
+# Comando de Desvio Operadores Logicos e Loops
+
+Outro tipo de dado é o *booleano*. Booleanos podem ser apenas dois valores: `true` ou `false`. Eles basicamente são interruptores pequenos, onde `true` é ligado e `false` é desligado. Esses dois estados são mutuamente exclusivos.
+
+**Observação:** valores booleanos nunca são escritos com aspas. As strings `"true"` e `"false"` não são booleanos e não tem nenhum significado especial em JavaScript.
+
+# **Usar lógica condicional com instruções if**
+
+instruções `if` são usadas para tomar decisões no código. A palavra-chave `if` diz ao JavaScript para executar o código nas chaves sob certas condições, definidas nos parênteses. Essas condições são conhecidas como condições `Boolean` e elas só podem ser `true` ou `false`.
+
+Quando a condição for `true`, o programa executará as instruções dentro das chaves. Quando a condição booleana for `false`, as instruções dentro das chaves não serão executadas.
+
+**Pseudocódigo**
+
+> if (
+> 
+> 
+> *condição é verdadeira*
+> 
+> *instrução é executada*
+> 
+
+**Exemplo**
+
+```
+function test (myCondition) {
+  if (myCondition) {
+    return "It was true";
+  }
+  return "It was false";
+}
+
+test(true);
+test(false);
+
+```
+
+`test(true)` retorna a string `It was true` e `test(false)` retorna a string `It was false`.
+
+Quando `test` é chamado com o valor `true`, a instrução `if` avalia `myCondition` para verificar se é `true` ou não. Já que é `true`, a função retorna `It was true`. Quando chamamos `test` com um valor de `false`, `myCondition` *não é* `true`, a instrução nas chaves não é executada e a função retorna `It was false`.
+
+# **Comparar com o operador de igualdade**
+
+Há muitos *operadores de comparação* em JavaScript. Todos esses operadores retornam um valor booleano `true` ou `false`.
+
+O operador mais básico é o operador de igualdade `==`. O operador de igualdade compara dois valores e retorna `true` se eles são equivalentes ou `false` se não são. Observe que o operador de igualdade é diferente do operador de atribuição (`=`), que atribui o valor à direita do operador para uma variável à esquerda.
+
+```
+function equalityTest(myVal) {
+  if (myVal == 10) {
+    return "Equal";
+  }
+  return "Not Equal";
+}
+
+```
+
+Se `myVal` é igual a `10`, o operador de igualdade retorna `true`, assim o código nas chaves será executado e a função retornará `Equal`. Caso contrário, a função retornará `Not Equal`. Para que o JavaScript possa comparar dois *tipos de dados* diferentes (por exemplo, `numbers` e `strings`), deve converter um tipo para outro. Isto é conhecido como coerção de tipo (casting ou type coercion). No entanto, uma vez que a faça, você pode comparar os termos da seguinte forma:
+
+```
+1   ==  1  // true
+1   ==  2  // false
+1   == '1' // true
+"3" ==  3  // true
+```
+
+# **Comparar com o operador de igualdade estrita**
+
+Igualdade estrita (`===`) é a contrapartida do operador de igualdade (`==`). No entanto, ao contrário do operador de igualdade, que tenta converter ambos os valores em comparação a um tipo comum, o operador estrito de igualdade não realiza uma conversão de tipo.
+
+Se os valores que são comparados tiverem valores diferentes, são considerados desiguais, e o operador de igualdade estrito retornará falso.
+
+**Exemplos**
+
+```
+3 ===  3  // true
+3 === '3' // false
+
+```
+
+No segundo exemplo, `3` é um tipo de `Number` e `'3'` é um tipo `String`.
+
+---
+
+Use o operador de igualdade estrita na instrução `if`, para que a função retorne a string `Equal` quando `val` for estritamente igual a `7`.
+
+# **Praticar a comparação de diferentes valores**
+
+Nos últimos dois desafios, aprendemos sobre o operador de igualdade (`==`) e o operador de igualdade estrita (`===`). Vamos fazer uma breve revisão e praticar usando esses operadores mais uma vez.
+
+Se os valores sendo comparados não são do mesmo tipo, o operador de igualdade fará a conversão de tipo e, então, avaliará os valores. No entanto, o operador de igualdade estrita vai comparar ambos os tipos de dados e os valores, sem converter de um tipo para outro.
+
+**Exemplos**
+
+`3 == '3'` retorna `true` porque JavaScript faz a conversão de tipo de string para número. `3 === '3'` retorna `false` porque os tipos são diferentes e não é feita a conversão de tipo.
+
+**Observação:** em JavaScript, você pode determinar o tipo de uma variável ou de um valor, com o operador `typeof`, como vemos a seguir:
+
+```
+typeof 3
+typeof '3'
+
+```
+
+`typeof 3` retorna a string `number` e `typeof '3'` retorna a string `string`.
+
+---
+
+A função `compareEquality` no editor compara dois valores usando o operador de igualdade. Modifique a função para que ela retorne a string `Equal` apenas quando os valores forem estritamente iguais.
+
+# **Comparar com o operador de desigualdade**
+
+O operador de desigualdade (`!=`) é o oposto do operador de igualdade. Significa que não é igual e retorna `false` onde a igualdade retornaria `true` e *vice-versa*. Tal como o operador de igualdade, o operador de desigualdade converterá os tipos de dados de valores enquanto compara.
+
+**Exemplos**
+
+```
+1 !=  2    // true
+1 != "1"   // false
+1 != '1'   // false
+1 != true  // false
+0 != false // false
+
+```
+
+---
+
+Adicione o operador de desigualdade `!=` na instrução `if` para que a função retorne a string `Not Equal` quando `val` não for equivalente a `99`.
+
+# **Comparar com o operador de desigualdade estrita**
+
+O operador de desigualdade estrito (`!==`) é o oposto lógico do operador de igualdade estrito. Significa que "não é estritamente igual" e retorna `false` onde a igualdade estrita retornaria `true` e *vice-versa*. O operador de desigualdade estrita não converterá tipos de dados.
+
+**Exemplos**
+
+```
+3 !==  3  // false
+3 !== '3' // true
+4 !==  3  // true
+
+```
+
+---
+
+Adicione o operador de desigualdade estrita ao comando `if` para que a função retorne a string `Not Equal` quando `val` não é estritamente igual a `17`
+
+# **Comparar com o operador maior que**
+
+O operador maior que (`>`) compara os valores de dois números. Se o número à esquerda for maior que o número à direita, ele retorna `true`. Caso contrário, ele retorna `false`.
+
+Tal como o operador de igualdade, o operador maior que converterá os tipos de dados de valores enquanto compara.
+
+**Exemplos**
+
+```
+5   >  3  // true
+7   > '3' // true
+2   >  3  // false
+'1' >  9  // false
+
+```
+
+---
+
+Adicione o operador maior que para indicar as linhas indicadas para que as instruções de retorno façam sentido.
+
+# **Comparar com o operador maior ou igual**
+
+O operador maior ou igual que (`>=`) compara os valores de dois números. Se o número à esquerda é maior ou igual ao número à direita, ele retorna `true`. Caso contrário, ele retornará `false`.
+
+Tal como o operador de igualdade, o operador maior que converterá os tipos de dados de valores enquanto compara.
+
+**Exemplos**
+
+```
+6   >=  6  // true
+7   >= '3' // true
+2   >=  3  // false
+'7' >=  9  // false
+
+```
+
+---
+
+Adicione o operador maior ou igual que às linhas indicadas para que as instruções de retorno façam sentido.
+
+# **Comparar com o operador menor ou igual**
+
+O operador menor ou igual (`<=`) compara os valores de dois números. Se o número à esquerda for menor ou igual ao número à direita, retornará `true`. Se o número à esquerda for maior que o número a direita, retornará `false`. Assim como o operador de igualdade, o operador de menor ou igual que converte os tipos de dados.
+
+**Exemplos**
+
+```
+4   <= 5 // true
+'7' <= 7 // true
+5   <= 5 // true
+3   <= 2 // false
+'8' <= 4 // false
+
+```
+
+---
+
+Adicione o operador menor ou igual que para indicar as linhas para que as instruções de retorno façam sentido.
+
+# **Comparar com o operador lógico AND**
+
+Às vezes, você precisará testar mais de uma coisa de cada vez. O *operador lógico AND* (`&&`) retornará `true` apenas se os *operadores* à esquerda e à direita forem verdadeiros.
+
+O mesmo efeito pode ser alcançado aninhando uma instrução if dentro de outro if:
+
+```
+if (num > 5) {
+  if (num < 10) {
+    return "Yes";
+  }
+}
+return "No";
+
+```
+
+só retornará `Yes` se `num` for maior que `5` e menor que `10`. A mesma lógica pode ser escrita assim:
+
+```
+if (num > 5 && num < 10) {
+  return "Yes";
+}
+return "No";
+
+```
+
+---
+
+Substitua as duas instruções if por uma declaração, usando o operador `&&`, que vai retornar a string `Yes` se `val` for menor ou igual a `50` e maior ou igual a `25`. Caso contrário, retornará a string `No`.
+
+# **Comparar com o operador lógico OR**
+
+O *operador lógico OR* (`||`) retorna `true` se qualquer um dos *operandos* for `true`. Caso contrário, retorna `false`.
+
+O *operador lógico ou* é composto por dois símbolos de pipe: (`||`). Normalmente, ele pode ser encontrado entre as teclas Backspace e Enter.
+
+O padrão abaixo deve parecer familiar aos pontos das passagens anteriores:
+
+```
+if (num > 10) {
+  return "No";
+}
+if (num < 5) {
+  return "No";
+}
+return "Yes";
+
+```
+
+retornará `Yes` apenas se `num` for entre `5` e `10` (5 e 10 incluídos). A mesma lógica pode ser escrita assim:
+
+```
+if (num > 10 || num < 5) {
+  return "No";
+}
+return "Yes";
+```
+
+# **Introduzir instruções else**
+
+Quando uma condição para uma instrução `if` for verdadeira, o bloco de código seguinte será executado. E quando a condição for falsa? Normalmente, nada aconteceria. Com uma instrução `else`, um bloco de código alternativo pode ser executado.
+
+```
+if (num > 10) {
+  return "Bigger than 10";
+} else {
+  return "10 or Less";
+}
+
+```
+
+---
+
+Combine as instruções `if` em uma única instrução `if/else`.
+
+# **Introduzir instruções else if**
+
+Se você tem múltiplas condições que precisam ser resolvidas, você pode encadear as instruções `if` junto com instruções `else if`.
+
+```
+if (num > 15) {
+  return "Bigger than 15";
+} else if (num < 5) {
+  return "Smaller than 5";
+} else {
+  return "Between 5 and 15";
+}
+
+```
+
+---
+
+Converta a lógica para usar instruções `else if`.
+
+# **Selecionar entre várias opções com instruções switch**
+
+Se você possui muitas opções pra escolher, use uma instrução *switch*. Uma instrução `switch` testa um valor e pode ter muitas instruções *case* as quais definem os diversos valores possíveis. As instruções são executadas desde o primeiro `case` correspondente até que seja encontrado um `break`.
+
+Aqui está um exemplo de uma instrução `switch`:
+
+```
+switch (lowercaseLetter) {
+  case "a":
+    console.log("A");
+    break;
+  case "b":
+    console.log("B");
+    break;
+}
+
+```
+
+Valores `case` são testados com o operador de igualdade estrita (`===`). O `break` diz ao JavaScript parar interromper a execução das instruções. Se o `break` for omitido, a próxima instrução case será executada.
+
+# **Adicionar uma opção padrão em instruções switch**
+
+Na instrução `switch`, você não deve ser capaz de especificar todos os possíveis valores como instruções `case`. Ao invés disso, você pode adicionar a instrução `default`, que será executada se nenhuma instrução `case` correspondente for encontrada. Pense nisso como a instrução final `else` em uma cadeia de `if/else`.
+
+A instrução `default` deve ser o último caso.
+
+```
+switch (num) {
+  case value1:
+    statement1;
+    break;
+  case value2:
+    statement2;
+    break;
+...
+  default:
+    defaultStatement;
+    break;
+}
+```
+
+# **Lidar com várias opções idênticas em instruções switch**
+
+Se a instrução `break` for omitida de uma instrução `case` de um `switch`, as instruções `case` seguintes serão executadas até que seja encontrado um `break`. Se você tem várias entradas com a mesma saída, você pode representá-las em uma instrução `switch` da seguinte forma:
+
+```
+let result = "";
+switch (val) {
+  case 1:
+  case 2:
+  case 3:
+    result = "1, 2, or 3";
+    break;
+  case 4:
+    result = "4 alone";
+}
+
+```
+
+Todos os casos para 1, 2 e 3 vão produzir o mesmo resultado.
+
+---
+
+Escreva uma instrução para definir `answer` para os seguintes intervalos:`1-3` - `Low4-6` - `Mid7-9` - `High`
+
+**Observação:** você precisará ter uma instrução `case` para cada número no intervalo.
+
+# **Criar objetos JavaScript**
+
+Você talvez tenha ouvido o termo `objeto` antes.
+
+Objetos são similares a `arrays`, exceto que, ao invés de usar índices para acessar e modificar seus dados, você acessa os dados em objetos através do que se chama `propriedades`.
+
+Objetos são úteis para armazenar dados de forma estruturada e podem representar objetos do mundo real, como um gato.
+
+Aqui está um exemplo de objeto gato:
+
+```
+const cat = {
+  "name": "Whiskers",
+  "legs": 4,
+  "tails": 1,
+  "enemies": ["Water", "Dogs"]
+};
+
+```
+
+Neste exemplo, todas as propriedades são armazenadas como strings, como `name`, `legs` e `tails`. Porém, você também pode usar números como propriedades. Você pode até omitir as aspas para propriedades de string com uma única palavra, da seguinte forma:
+
+```
+const anotherObject = {
+  make: "Ford",
+  5: "five",
+  "model": "focus"
+};
+
+```
+
+No entanto, se seu objeto tem quaisquer propriedades que não sejam strings, o JavaScript automaticamente definirá seus tipos como strings.
+
+# **Iterar números ímpares com um laço for**
+
+Laços for não tem de iterar um de cada vez. Ao alterar nossa `final-expression`, nós podemos contar os números pares.
+
+Começaremos em `i = 0` e um laço while `i < 10`. Incrementaremos `i` em 2 a cada iteração com `i += 2`.
+
+```
+const ourArray = [];
+
+for (let i = 0; i < 10; i += 2) {
+  ourArray.push(i);
+}
+
+```
+
+`ourArray` agora conterá `[0, 2, 4, 6, 8]`. Vamos mudar nossa `initialization` para que possamos contar por números ímpares.
+
+# **Iterar com laços while em JavaScript**
+
+Você pode rodar o mesmo código várias vezes usando um laço.
+
+O primeiro tipo de laço que aprenderemos é chamado de laço `while` porque ele rodará enquanto uma condição específica for verdadeira e vai parar uma vez que a condição não for mais verdadeira.
+
+```
+const ourArray = [];
+let i = 0;
+
+while (i < 5) {
+  ourArray.push(i);
+  i++;
+}
+
+```
+
+No código de exemplo acima, o laço `while` executará por 5 vezes e adicionará os números de 0 até 4 a `ourArray`.
+
+Vamos tentar fazer um laço while funcionar empurrando valores para um array.
+
+# **Iterar com laços for em JavaScript**
+
+Você pode rodar o mesmo código várias vezes usando um laço.
+
+O tipo mais comum de laço JavaScript é chamado de laço `for`, porque ele é executado por um número especificado de vezes.
+
+Laços for são declarados com três expressões opcionais separadas por ponto e vírgula:
+
+`for (a; b; c)`, onde `a` é a declaração de inicialização, `b` é a declaração de condição, e `c` é a expressão final.
+
+A declaração de inicialização é executada apenas uma vez antes de o laço iniciar. Normalmente, é usada para definir e configurar sua variável de laço.
+
+A declaração de condição é verificada no início de cada iteração do laço e vai continuar enquanto seu valor for `true`. Quando a condição for `false` no início da iteração, o laço vai parar de executar. Isso significa que se a condição de início for falsa, seu laço nunca será executado.
+
+A expressão final é executada no final de cada iteração do laço, antes da verificação da próxima condição e normalmente é usada para incrementar ou decrementar o contador do laço.
+
+No exemplo a seguir, inicializamos com `i = 0` e iteramos enquanto nossa condição `i < 5` for verdadeira. Nós incrementaremos `i` em `1` em cada iteração do laço com `i++` como nossa expressão final.
+
+```
+const ourArray = [];
+
+for (let i = 0; i < 5; i++) {
+  ourArray.push(i);
+}
+
+```
+
+`ourArray` agora terá o valor de `[0, 1, 2, 3, 4]`.
+
+# **Contar para trás com um laço for**
+
+Um laço for também pode contar pra trás, contanto que possamos definir as condições certas.
+
+Para decrementar em dois cada iteração, nós precisamos alterar nossa inicialização, condição e expressão final.
+
+Nós começaremos em `i = 10` e vamos iterar enquanto `i > 0`. Nós decrementamos `i` por dois em cada iteração com `i -= 2`.
+
+```
+const ourArray = [];
+
+for (let i = 10; i > 0; i -= 2) {
+  ourArray.push(i);
+}
+
+```
+
+`ourArray` agora vai conter `[10, 8, 6, 4, 2]`. Vamos mudar nossa inicialização e expressão final para que possamos contar para trás em dois para criar um array de números ímpares decrescentes.
+
+# **Iterar através de um array com laço for**
+
+Uma tarefa comum em JavaScript é para iterar através do conteúdo de um array. Uma forma de fazer isso é com um laço `for`. Esse código vai exibir cada elemento do array `arr` no console:
+
+```
+const arr = [10, 9, 8, 7, 6];
+
+for (let i = 0; i < arr.length; i++) {
+   console.log(arr[i]);
+}
+
+```
+
+Lembre-se de que arrays têm indexação baseada em zero, o que significa que o último índice do array é de `length - 1`. Nossa condição para esse laço é `i < arr.length`, que interrompe o laço quando `i` é igual a `length`. Nesse caso a última iteração é `i === 4`, ou seja, quando `i` se tornar igual a `arr.length - 1` e exibir `6` no console. Em seguida, `i` aumenta para `5`, e o laço é interrompido porque `i < arr.length` é `false`.
+
+# **Aninhar laços for**
+
+Se você possui um array multidimensional, você pode usar a mesma lógica no ponto de passagem anterior para iterar através de arrays e de qualquer sub-array. Exemplo:
+
+```
+const arr = [
+  [1, 2], [3, 4], [5, 6]
+];
+
+for (let i = 0; i < arr.length; i++) {
+  for (let j = 0; j < arr[i].length; j++) {
+    console.log(arr[i][j]);
+  }
+}
+
+```
+
+Isso exibe no console cada subelemento dentro de `arr`, um de cada vez. Note que para o laço interno, nós estamos verificando a propriedade `.length` de `arr[i]`, desde que `arr[i]` também seja um array.
+
+# **Iterar com laços do...while em JavaScript**
+
+O próximo tipo de laço que você aprenderá é chamado de laço `do...while`. O laço `do...while` é chamado assim porque primeiro fará algo (`do`) ou executará algo uma vez dentro do bloco de código, não importando o que acontecer. Em seguida, continuará a executar o laço enquanto (`while`) a condição for `true`.
+
+```
+const ourArray = [];
+let i = 0;
+
+do {
+  ourArray.push(i);
+  i++;
+} while (i < 5);
+
+```
+
+O exemplo acima se comporta de forma similar a outros tipos de laços, e o array resultante se parecerá com `[0, 1, 2, 3, 4]`. No entanto, o que torna o laço `do...while` diferente de outros laços é como ele se comporta quando uma condição falha na primeira verificação. Vamos ver isso na prática. Aqui está um laço comum `while` que rodará o código no laço enquanto `i < 5`:
+
+```
+const ourArray = [];
+let i = 5;
+
+while (i < 5) {
+  ourArray.push(i);
+  i++;
+}
+
+```
+
+Nesse exemplo, inicializamos o valor de `ourArray` como um array vazio e o valor de `i` sendo 5. Quando executamos o laço `while`, a condição é igual a `false` porque `i` não é menor que 5, portanto nós não executamos o código dentro do laço. O resultado é que `ourArray` terminará sem valores adicionados a ele, e ainda se parecerá com `[]` quando todas as linhas do código no exemplo acima forem completamente executadas. Agora, dê uma olhada no laço `do...while`:
+
+```
+const ourArray = [];
+let i = 5;
+
+do {
+  ourArray.push(i);
+  i++;
+} while (i < 5);
+
+```
+
+Nesse caso, nós inicializamos o valor de `i` para 5, assim como fizemos com o laço `while`. Quando chegamos na próxima linha, não há condição a ser analisada, então nós vamos ao código dentro das chaves e o executamos. Nós adicionaremos um único elemento ao array e então incrementamos `i` antes de chegarmos à verificação da condição. Quando nós finalmente temos o resultado da condição `i < 5` na última linha, nós notamos que `i` agora é 6, o que não cumpre a verificação da condição, então nós saímos do laço e terminamos. Ao final do exemplo acima, o valor de `ourArray` é `[5]`. Essencialmente, um laço `do...while` garante que o código dentro do laço será executado pelo menos uma vez. Vamos tentar fazer um laço `do...while` funcionar inserindo valores em um array.
+
+# **Substituir laços usando recursão**
+
+Recursão é o conceito de que uma função pode ser chamada por ela mesma. Para ajudar a entender isso, comece a pensar sobre a seguinte tarefa: multiplique os primeiros `n` elementos de um array para criar o produto desses elementos. Usando um laço `for`, você poderia fazer isso:
+
+```
+  function multiply(arr, n) {
+    let product = 1;
+    for (let i = 0; i < n; i++) {
+      product *= arr[i];
+    }
+    return product;
+  }
+
+```
+
+No entanto, note que `multiply(arr, n) == multiply(arr, n - 1) * arr[n - 1]`. Isso significa que você pode reescrever `multiply` dentro da própria função e nunca precisar usar um laço.
+
+```
+  function multiply(arr, n) {
+    if (n <= 0) {
+      return 1;
+    } else {
+      return multiply(arr, n - 1) * arr[n - 1];
+    }
+  }
+
+```
+
+A versão recursiva de `multiply` fica dessa forma. No *caso de base*, onde `n <= 0`, ele retorna 1. Para valores maiores de `n`, a função chama a si mesma, mas com `n - 1`. Essa chamada da função é avaliada da mesma forma, chamando `multiply` novamente até que `n <= 0`. Nesse ponto, todas as funções podem retornar e a função `multiply` original retorna a resposta.
+
+**Observação:** funções recursivas precisam ter um caso de base quando elas retornam sem chamar a função novamente (nesse exemplo, quando `n <= 0`), caso contrário, elas nunca vão parar de executar.
