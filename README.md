@@ -1401,3 +1401,326 @@ No entanto, note que `multiply(arr, n) == multiply(arr, n - 1) * arr[n - 1]`. I
 A versão recursiva de `multiply` fica dessa forma. No *caso de base*, onde `n <= 0`, ele retorna 1. Para valores maiores de `n`, a função chama a si mesma, mas com `n - 1`. Essa chamada da função é avaliada da mesma forma, chamando `multiply` novamente até que `n <= 0`. Nesse ponto, todas as funções podem retornar e a função `multiply` original retorna a resposta.
 
 **Observação:** funções recursivas precisam ter um caso de base quando elas retornam sem chamar a função novamente (nesse exemplo, quando `n <= 0`), caso contrário, elas nunca vão parar de executar.
+
+# Objetos
+
+Objetos são úteis para armazenar dados de forma estruturada e podem representar objetos do mundo real, como um gato.
+
+Aqui está um exemplo de objeto gato:
+
+```jsx
+const cat = {
+  "name": "Whiskers",
+  "legs": 4,
+  "tails": 1,
+  "enemies": ["Water", "Dogs"]
+};
+
+```
+
+Neste exemplo, todas as propriedades são armazenadas como strings, como `name`, `legs` e `tails`. Porém, você também pode usar números como propriedades. Você pode até omitir as aspas para propriedades de string com uma única palavra, da seguinte forma:
+
+```
+const anotherObject = {
+  make: "Ford",
+  5: "five",
+  "model": "focus"
+};
+
+```
+
+No entanto, se seu objeto tem quaisquer propriedades que não sejam strings, o JavaScript automaticamente definirá seus tipos como strings.
+
+# **Acessar propriedades de objetos com notação de pontos**
+
+Existem duas formas para acessar as propriedades de um objeto: notação de ponto (`.`) e notação de colchetes (`[]`), de forma similar a um array.
+
+Notação de ponto é o que você utiliza quando você sabe o nome da propriedade que você está tentando acessar antecipadamente.
+
+Aqui está um exemplo usando notação de ponto (`.`) para ler uma propriedade do objeto:
+
+```
+const myObj = {
+  prop1: "val1",
+  prop2: "val2"
+};
+
+const prop1val = myObj.prop1;
+const prop2val = myObj.prop2;
+
+```
+
+`prop1val` teria o valor `val1` e `prop2val` teria o valor `val2`.
+
+# **Acessar propriedades de objeto com notação de colchetes**
+
+A segunda forma para acessar as propriedades de um objeto é a notação de colchetes (`[]`). Se a propriedade do objeto que você está tentando acessar possui um espaço no seu nome, você precisará usar a notação de colchetes.
+
+No entanto, você ainda pode usar a notação de colchetes nas propriedades dos objetos sem espaços.
+
+Aqui está um exemplo usando a notação de colchetes para ler uma propriedade de um objeto:
+
+```
+const myObj = {
+  "Space Name": "Kirk",
+  "More Space": "Spock",
+  "NoSpace": "USS Enterprise"
+};
+
+myObj["Space Name"];
+myObj['More Space'];
+myObj["NoSpace"];
+
+```
+
+`myObj["Space Name"]` seria a string `Kirk`, `myObj['More Space']` seria a string `Spock` e `myObj["NoSpace"]` seria a string `USS Enterprise`.
+
+Note que os nomes das propriedades com espaços neles precisam estar entre aspas (simples ou duplas).
+
+# **Acessar propriedades de objetos com variáveis**
+
+Outro uso de notação de colchetes em objetos é para acessar a propriedade a qual está armazenada como o valor de uma variável. Isso pode ser muito útil para iterar através das propriedades de um objeto ou quando acessando uma tabela de pesquisa.
+
+Aqui está um exemplo de usar uma variável para acessar uma propriedade:
+
+```
+const dogs = {
+  Fido: "Mutt",
+  Hunter: "Doberman",
+  Snoopie: "Beagle"
+};
+
+const myDog = "Hunter";
+const myBreed = dogs[myDog];
+console.log(myBreed);
+
+```
+
+A string `Doberman` seria exibida no console.
+
+Observe que *não* usamos aspas em torno do nome da variável ao usá-la para acessar a propriedade, porque estamos usando o *valor* da variável, e não o *nome*.
+
+# **Atualizar propriedades do objeto**
+
+Depois de criar um objeto JavaScript, você pode atualizar suas propriedades a qualquer momento, como você atualizaria qualquer outra variável. Você pode usar notação de ponto ou colchete para atualizar.
+
+Por exemplo, vamos dar uma olhada em `ourDog`:
+
+```
+const ourDog = {
+  "name": "Camper",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["everything!"]
+};
+
+```
+
+Como ele é um cachorro particularmente feliz, vamos mudar seu nome para o texto `Happy Camper`. Veja como atualizamos a propriedade name do objeto: `ourDog.name = "Happy Camper";` ou `ourDog["name"] = "Happy Camper";` Agora, quando avaliamos `ourDog.name`, em vez de obter `Camper`, teremos seu novo nome, `Happy Camper`.
+
+# **Adicionar novas propriedades para um objeto JavaScript**
+
+Você pode adicionar novas propriedades para um objeto JavaScript existente da mesma forma pela qual você os modificaria.
+
+Aqui está como adicionaríamos uma propriedade `bark` para `ourDog`:
+
+```
+ourDog.bark = "bow-wow";
+
+```
+
+ou
+
+```
+ourDog["bark"] = "bow-wow";
+
+```
+
+Agora, quando acessamos `ourDog.bark`, nós teremos o seu latido, `bow-wow`.
+
+Exemplo:
+
+```
+const ourDog = {
+  "name": "Camper",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["everything!"]
+};
+
+ourDog.bark = "bow-wow";
+```
+
+# **Excluir propriedades de um objeto JavaScript**
+
+Podemos também excluir propriedades de objetos dessa forma:
+
+```
+delete ourDog.bark;
+
+```
+
+Exemplo:
+
+```
+const ourDog = {
+  "name": "Camper",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["everything!"],
+  "bark": "bow-wow"
+};
+
+delete ourDog.bark;
+
+```
+
+Após a última linha mostrada acima, `ourDog` se parece com:
+
+```
+{
+  "name": "Camper",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["everything!"]
+}
+
+```
+
+---
+
+Exclua a propriedade `tails` de `myDog`. Você pode usar tanto notação de ponto quanto notação de colchetes.
+
+# **Usar objetos para pesquisas**
+
+Objetos podem ser pensados como armazenamento de chave/valor, como um dicionário. Se você tem um dado tabular, você pode usar um objeto para pesquisar valores ao invés de uma instrução `switch` ou uma cadeia de `if/else`. Isso é mais útil quando você sabe que o seu dado de entrada é limitado para um certo intervalo.
+
+Aqui está um exemplo de uma simples pesquisa reversa no alfabeto:
+
+```
+const alpha = {
+  1:"Z",
+  2:"Y",
+  3:"X",
+  4:"W",
+  ...
+  24:"C",
+  25:"B",
+  26:"A"
+};
+
+const thirdLetter = alpha[2];
+const lastLetter = alpha[24];
+
+const value = 2;
+const valueLookup = alpha[value];
+
+```
+
+`thirdLetter` é a string `Y`, `lastLetter` é a string `C` e `valueLookup` é a string `Y`.
+
+# **Testar objetos por propriedades**
+
+Às vezes, é útil verificar se a propriedade de um determinado objeto existe ou não. Podemos usar o método de objetos `.hasOwnProperty(propname)` para determinar se aquele objeto possui o nome de propriedade fornecido. `.hasOwnProperty()` retorna `true` ou `false` se a propriedade for encontrada ou não.
+
+**Exemplo**
+
+```
+const myObj = {
+  top: "hat",
+  bottom: "pants"
+};
+
+myObj.hasOwnProperty("top");
+myObj.hasOwnProperty("middle");
+
+```
+
+O primeiro `hasOwnProperty` retorna `true`, enquanto o segundo retorna `false`.
+
+# **Manipular objetos complexos**
+
+Às vezes, você pode querer armazenar dados em uma *Estrutura de Dados* flexível. Um objeto JavaScript é uma forma de lidar com dados flexíveis. Eles permitem combinações arbitrárias de *strings*, *numbers*, *booleans*, *arrays*, *functions* e *objects*.
+
+Aqui está um exemplo de estrutura de dados complexas:
+
+```
+const ourMusic = [
+  {
+    "artist": "Daft Punk",
+    "title": "Homework",
+    "release_year": 1997,
+    "formats": [
+      "CD",
+      "Cassette",
+      "LP"
+    ],
+    "gold": true
+  }
+];
+
+```
+
+Este é um array que contém um objeto dentro dele. O objeto possui vários pedaços de *metadados* sobre um álbum. Também possui um array aninhado `formats`. Se você quiser adicionar mais álbuns, você pode fazer isso adicionando os discos ao array de alto nível. Objetos armazenam dados em uma propriedade, a qual possui um formato de chave-valor. No exemplo acima, `"artist": "Daft Punk"` é uma propriedade que tem uma chave `artist` e um valor de `Daft Punk`.
+
+**Observação:** você precisará colocar uma vírgula após cada objeto no array, a não ser que ele seja o último objeto no array.
+
+# **Acessar objetos aninhados**
+
+As subpropriedades de objetos podem ser acessadas ao encadear a notação de ponto e de colchetes.
+
+Aqui está um objeto aninhado:
+
+```
+const ourStorage = {
+  "desk": {
+    "drawer": "stapler"
+  },
+  "cabinet": {
+    "top drawer": {
+      "folder1": "a file",
+      "folder2": "secrets"
+    },
+    "bottom drawer": "soda"
+  }
+};
+
+ourStorage.cabinet["top drawer"].folder2;
+ourStorage.desk.drawer;
+
+```
+
+`ourStorage.cabinet["top drawer"].folder2` seria a string `secrets` e `ourStorage.desk.drawer` seria a string `stapler`.
+
+# **Acessar arrays aninhados**
+
+Como vimos em exemplos anteriores, objetos podem conter tanto objetos aninhados quanto arrays aninhados. Semelhante ao acesso de objetos aninhados, a notação de colchetes pode ser encadeada para se acessar arrays aninhados.
+
+Aqui está um exemplo de como se acessar um array aninhado:
+
+```
+const ourPets = [
+  {
+    animalType: "cat",
+    names: [
+      "Meowzer",
+      "Fluffy",
+      "Kit-Cat"
+    ]
+  },
+  {
+    animalType: "dog",
+    names: [
+      "Spot",
+      "Bowser",
+      "Frankie"
+    ]
+  }
+];
+
+ourPets[0].names[1];
+ourPets[1].names[0];
+
+```
+
+`ourPets[0].names[1]` seria a string `Fluffy` e `ourPets[1].names[0]` seria a string `Spot`.
