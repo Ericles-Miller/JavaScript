@@ -1,0 +1,41 @@
+function rot13(str) {
+  var alfabeto = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+  
+  let keep = [];
+  let newStr = ''
+  let x = 13;
+  let regex = /\W/;
+  str = str.toLowerCase()
+  
+
+  for (let i = 0; i < str.length; i++)
+  {
+    if(str[i] != ' ')
+    {
+      for (let j = 0; j < alfabeto.length; j++)
+      {
+        if (str[i] == alfabeto[j])
+        {
+          keep[i] = alfabeto[(j + x) % alfabeto.length];
+          break;
+        }
+        else if(regex.test(str[i])){
+          keep[i] = str[i]
+    }
+      }
+    }
+    
+    else 
+    {
+      keep[i] = ' ';
+    }
+  }
+    for (let i =0; i<keep.length; i++){
+      newStr+= keep[i];
+    }
+
+    console.log(newStr)
+    return newStr.toUpperCase();
+}
+
+rot13("SERR CVMMN!");

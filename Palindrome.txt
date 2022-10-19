@@ -1,0 +1,27 @@
+function compareArrays(a1, a2) {
+    return a1.length === a2.length && a1.every((value, index) => value === a2[index]);
+}
+
+function palindrome(str) {
+  let newStr = ''
+  let regex = /[a-z0-9]/g
+
+  str = str.toLowerCase().match(regex)
+  console.log(str)
+
+  for(let i = str.length - 1; i >= 0; i--){
+    newStr += str[i]; 
+    
+  }
+  newStr = newStr.split('')
+
+  let compare = compareArrays(newStr, str)
+
+  if(compare){
+    return true
+  }
+  console.log(newStr)
+  return false;
+}
+
+palindrome("A man, a plan, a canal. Panama");

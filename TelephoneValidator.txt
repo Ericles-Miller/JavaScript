@@ -1,0 +1,54 @@
+function telephoneCheck(str) {
+  
+  
+  let regex0= /^\d/
+  console.log(str.match(regex0))
+  let regex1= /^(\d{3})(-)(\d{3})(-)(\d{4})$/
+  let regex2= /^(\d)(\s)(\d{3})(-)(\d{3})(-)(\d{4})$/ 
+  let regex3= /^(\d)(\s)()(\d{3})(\()(\s)(\d{3})(-)(\d{4})$/
+  let regex4= /^\((\d{3})\)(\d{3})-(\d{4})$/
+  let regex5= /(^\d{11})/
+  let regex6= /^(\d)\((\d{3})\)(\d{3})(-)(\d{4})$/
+  let regex7= /(^\d{10})/
+  let regex8= /^(\d)(\s)(\W)(\d{3})(\W)(\s)(\d{3})(-)(\d{4})$/
+  let regex9= /^(\d)(\s)(\d{3})(\s)(\d{3})(\s)(\d{4})$/
+  if(regex1.test(str)){
+    console.log(str, 'regex1')
+    return true}
+  
+  else if(regex2.test(str)){
+    console.log(str, 'regex2')
+    return true}
+
+  else if(regex4.test(str)){
+    console.log(str, 'regex3')
+    return true}
+  
+  else if(regex3.test(str)){
+    console.log(str, 'regex4')
+    return true}
+
+  else if(regex5.test(str)){
+    console.log(str, 'regex5')
+    return false}
+
+  else if(regex6.test(str) && str.match(regex0) == 1){
+    console.log(str, 'regex6')
+    return true}
+
+  else if(regex7.test(str)){
+    console.log(str, 'regex7')
+    return true}
+  
+  else if(regex8.test(str)&& str.match(regex0) == 1 ){
+    console.log(str, 'regex8')
+    return true}
+  
+  else if(regex9.test(str)){
+    console.log(str, 'regex9')
+    return true}
+
+  return false;
+}
+
+telephoneCheck("555-555-5555");
